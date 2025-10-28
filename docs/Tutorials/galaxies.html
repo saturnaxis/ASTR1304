@@ -523,41 +523,41 @@ document.write(`
 <h2><span class="section-number">19.1. </span>Finding the Distance from a Type Ia Supernova<a class="headerlink" href="#finding-the-distance-from-a-type-ia-supernova" title="Link to this heading">#</a></h2>
 <p>Type Ia supernovae can shine as bright as an entire galaxy at their maximum brightness, which makes them ideal to use as a standard candle.  <strong>How do astronomers use Type Ia supernovae to estimate distance?</strong></p>
 <p>The first method uses the inverse-square law of light, which relates the flux <span class="math notranslate nohighlight">\(F\)</span> (or brightness), luminosity <span class="math notranslate nohighlight">\(L\)</span>, and distance <span class="math notranslate nohighlight">\(d\)</span> by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d935205-dca8-4e37-bee4-1dcb5fdb775a">
-<span class="eqno">(19.1)<a class="headerlink" href="#equation-3d935205-dca8-4e37-bee4-1dcb5fdb775a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-11616617-bcc2-41bc-9c86-1a8d4b25ee62">
+<span class="eqno">(19.1)<a class="headerlink" href="#equation-11616617-bcc2-41bc-9c86-1a8d4b25ee62" title="Permalink to this equation">#</a></span>\[\begin{align}
 F = \frac{L}{4\pi d^2}.
 \end{align}\]</div>
 <p>We can do two things to the above formula: (1) rewrite it in terms of the solar constant <span class="math notranslate nohighlight">\(F_\odot\ (=1361\ {\rm W/m^2})\)</span> and (2) re-arrange it so that we solve for the distance <span class="math notranslate nohighlight">\(d\)</span> directly.  We can get there by,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d5944702-1a95-4d66-8445-1a6e40c8991e">
-<span class="eqno">(19.2)<a class="headerlink" href="#equation-d5944702-1a95-4d66-8445-1a6e40c8991e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-73889ae9-e9e8-44ce-910b-e9e6a0d2fb74">
+<span class="eqno">(19.2)<a class="headerlink" href="#equation-73889ae9-e9e8-44ce-910b-e9e6a0d2fb74" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{F}{F_\odot} = \left(\frac{L}{L_\odot}\right)\left(\frac{1\ {\rm AU}}{d}\right)^2, \\
 \frac{d}{1\ {\rm AU}} = \sqrt{\left(\frac{L}{L_\odot}\right)\left(\frac{1361\ {\rm W/m^2}}{F}\right)}.
 \end{align}\]</div>
 <p>From the definition of <a class="reference external" href="https://en.wikipedia.org/wiki/Parsec">parsec</a>, we can use the following conversion factors:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-1\ {\rm AU} &amp;= \frac{\pi}{6.48 \times 10^5}\ {\rm pc},\\
-1\ {\rm AU} &amp;= \frac{\pi}{6.48 \times 10^{11}}\ {\rm Mpc}.
-\end{align*}\]</div>
+<div class="math notranslate nohighlight">
+\[ 1\ {\rm AU} = \frac{\pi}{6.48 \times 10^5}\ {\rm pc}, \]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[ 1\ {\rm AU} = \frac{\pi}{6.48 \times 10^{11}}\ {\rm Mpc}. \]</div>
 <p>Type Ia supernovae are typically measured in other galaxies (which are really far away), so let’s use the formula with <span class="math notranslate nohighlight">\(\rm Mpc\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1b71b221-1dbc-462f-a770-1a9228874c58">
-<span class="eqno">(19.3)<a class="headerlink" href="#equation-1b71b221-1dbc-462f-a770-1a9228874c58" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6c4191ae-984d-433c-b9fa-c594d4832ade">
+<span class="eqno">(19.3)<a class="headerlink" href="#equation-6c4191ae-984d-433c-b9fa-c594d4832ade" title="Permalink to this equation">#</a></span>\[\begin{align}
 d({\rm Mpc}) = \left(\frac{\pi}{6.48 \times 10^{11}}\right)\sqrt{\left(\frac{L}{L_\odot}\right)\left(\frac{1361\ {\rm W/m^2}}{F}\right)}.
 \end{align}\]</div>
 <p>From the above formula, we need to know the luminosity <span class="math notranslate nohighlight">\(L\)</span> of a Type Ia supernova and the observed flux <span class="math notranslate nohighlight">\(F\)</span> (in <span class="math notranslate nohighlight">\(W/m^2\)</span>).  The typical maximum luminosity <span class="math notranslate nohighlight">\(L\)</span> of a Type Ia supernova is about <span class="math notranslate nohighlight">\(9.5 \times 10^9\ L_\odot\)</span>.</p>
 <p><strong>In our textbook, it shows a picture of a Type Ia supernova in the Pinwheel Galaxy (M101).  The maximum observed flux of the supernova was <span class="math notranslate nohighlight">\(7.5\times 10^{-12}\ {\rm W/m^2}\)</span>.  How far away is M101 in ly?</strong></p>
 <p>We can directly substitute the observed flux into our equation and find the distance to M101 in <span class="math notranslate nohighlight">\(\rm Mpc\)</span>.  Recall that <span class="math notranslate nohighlight">\(1\ {\rm pc} = 3.26\ {\rm ly}\)</span>, which means that <span class="math notranslate nohighlight">\(1\ {\rm Mpc} = 3.26 \times 10^6\ {\rm ly} = 3.26\ {\rm Mly}\)</span>.</p>
 <p>First, finding the distance in <span class="math notranslate nohighlight">\(\rm Mpc\)</span> gives,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-089aad2f-9db1-4c19-ad60-4703a8834d7d">
-<span class="eqno">(19.4)<a class="headerlink" href="#equation-089aad2f-9db1-4c19-ad60-4703a8834d7d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ce2f7b90-2bb5-42eb-8a44-5fadb06c2b83">
+<span class="eqno">(19.4)<a class="headerlink" href="#equation-ce2f7b90-2bb5-42eb-8a44-5fadb06c2b83" title="Permalink to this equation">#</a></span>\[\begin{align}
 d &amp;= \left(\frac{\pi}{6.48 \times 10^{11}}\right)\sqrt{\left(\frac{9.5 \times 10^9\ L_\odot}{L_\odot}\right)\left(\frac{1361\ {\rm W/m^2}}{7.5\times 10^{-12}\ {\rm W/m^2}}\right)}, \\
 &amp;= \left(4.85 \times 10^{-12} \right)\sqrt{\left(9.5 \times 10^9 \right)\left(1.81 \times 10^{14} \right)}, \\
 &amp;= \left(4.85 \times 10^{-12} \right)\left(1.31 \times 10^{12} \right), \\
 &amp;= 6.4\ {\rm Mpc}.
 \end{align}\]</div>
 <p>Now we must convert to <span class="math notranslate nohighlight">\(\rm ly\)</span> to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dace65d2-5a04-4adc-ba9c-79f5408a9c5a">
-<span class="eqno">(19.5)<a class="headerlink" href="#equation-dace65d2-5a04-4adc-ba9c-79f5408a9c5a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4ad476b8-d315-4311-82eb-ffa939e6d61e">
+<span class="eqno">(19.5)<a class="headerlink" href="#equation-4ad476b8-d315-4311-82eb-ffa939e6d61e" title="Permalink to this equation">#</a></span>\[\begin{align}
 d &amp;= \frac{6.4\ {\rm Mpc}}{1}\times \frac{3.26 \times 10^6\ {\rm ly}}{1\ {\rm Mpc}}, \\
 &amp;= 2.1 \times 10^7\ {\rm ly}.
 \end{align}\]</div>
@@ -586,8 +586,8 @@ The Type Ia supernova places M101 2.1e+07 ly away.
 <section id="calculating-recession-velocity-and-galactic-distances">
 <h2><span class="section-number">19.2. </span>Calculating Recession Velocity and Galactic Distances<a class="headerlink" href="#calculating-recession-velocity-and-galactic-distances" title="Link to this heading">#</a></h2>
 <p>We can determine a great deal using the equation for the Doppler effect (see <a class="reference external" href="https://saturnaxis.github.io/IntroAstro/Tutorials/light.html#making-use-of-the-doppler-effect">Making use of the Doppler effect</a>), where we measure the a spectral feature (in absorption or emission) is shifted in wavelength <span class="math notranslate nohighlight">\(\lambda_{\rm obs}\)</span> relative to the rest wavelength <span class="math notranslate nohighlight">\(\lambda_{\rm rest}\)</span>.  We have the Doppler effect equation for radial velocity <span class="math notranslate nohighlight">\(v_r\)</span> as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-56ebf4ab-8ef4-4195-9fb2-14bce3d63518">
-<span class="eqno">(19.6)<a class="headerlink" href="#equation-56ebf4ab-8ef4-4195-9fb2-14bce3d63518" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f44914c8-6a0c-46dd-8656-1909c7db461b">
+<span class="eqno">(19.6)<a class="headerlink" href="#equation-f44914c8-6a0c-46dd-8656-1909c7db461b" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_r = \frac{\lambda_{\rm obs}-\lambda_{\rm rest}}{\lambda_{\rm rest}} \times c,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(c = 300,000\ {\rm km/s}\)</span>, or the speed of light.  Recall that</p>
@@ -596,8 +596,8 @@ v_r = \frac{\lambda_{\rm obs}-\lambda_{\rm rest}}{\lambda_{\rm rest}} \times c,
 <li><p><span class="math notranslate nohighlight">\(\lambda_{\rm obs}-\lambda_{\rm rest}&gt; 0\)</span> corresponds to a redshift because <span class="math notranslate nohighlight">\(\lambda_{\rm obs}&gt;\lambda_{\rm rest}\)</span>.</p></li>
 </ul>
 <p>For non-relativistic galaxy motion, we can replace the fraction in the Doppler equation with a single value <span class="math notranslate nohighlight">\(z\)</span>. <strong>Note: there is a correction to <span class="math notranslate nohighlight">\(z\)</span> as you approach the speed of light.</strong>  As a result, we now have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2aa53f0b-2530-4298-b0da-354c59bfd230">
-<span class="eqno">(19.7)<a class="headerlink" href="#equation-2aa53f0b-2530-4298-b0da-354c59bfd230" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c3ecfe3d-88fe-4f6a-bd16-a71c6c05ac9d">
+<span class="eqno">(19.7)<a class="headerlink" href="#equation-c3ecfe3d-88fe-4f6a-bd16-a71c6c05ac9d" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_r = z \times c.
 \end{align}\]</div>
 <p><strong>You’re observing nebulae in the 1920’s and taking measurements of using a spectrograph (see <a class="reference internal" href="#galaxy-fig"><span class="std std-numref">Fig. 19.1</span></a> below).</strong>  You try to measure the <span class="math notranslate nohighlight">\(H\ \alpha\)</span> line at <span class="math notranslate nohighlight">\(656.3\ {\rm nm}\)</span> but find that it’s redshifted (see <a class="reference internal" href="#tab-radial-velocity"><span class="std std-numref">Table 19.1</span></a> below).</p>
@@ -721,8 +721,8 @@ z = \frac{657.394 - 656.3}{656.3} = \frac{1.094}{656.3} = 0.0017.
 \[ v_r = 0.0017 \times (3\times 10^5\ {\rm km/s}) = 500\ {\rm km/s},\]</div>
 <p>which matches our table.  Look’s like we’re doing it right.</p>
 <p>Now, let’s find the distance to NGC 5236 using the Hubble constant <span class="math notranslate nohighlight">\((H_o = 70\ {\rm km/s/Mpc})\)</span>.  Hubble’s law is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4015ad15-e6ec-4b92-b4fb-7fce6db498bf">
-<span class="eqno">(19.8)<a class="headerlink" href="#equation-4015ad15-e6ec-4b92-b4fb-7fce6db498bf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-37d46877-ab73-40af-874e-cff2735d541f">
+<span class="eqno">(19.8)<a class="headerlink" href="#equation-37d46877-ab73-40af-874e-cff2735d541f" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_r = H_o \times d,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(d\)</span> is the distance in <span class="math notranslate nohighlight">\(Mpc\)</span>.  Using a little algebra, we find for NGC 5236</p>
@@ -735,8 +735,8 @@ v_r = H_o \times d,
 <section id="size-of-a-smbh">
 <h3><span class="section-number">19.3.1. </span>Size of a SMBH<a class="headerlink" href="#size-of-a-smbh" title="Link to this heading">#</a></h3>
 <p>The size of a black hole depends only on a single parameter, its <strong>mass</strong>.  Recall the expression for the Schwarzschild radius <span class="math notranslate nohighlight">\(R_s\)</span>, which relates the radius of the black hole (or event horizon) to the black hole mass <span class="math notranslate nohighlight">\(M_{\rm BH}\)</span>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-273b2e8a-bfda-4eac-b9fe-c114c97280f3">
-<span class="eqno">(19.9)<a class="headerlink" href="#equation-273b2e8a-bfda-4eac-b9fe-c114c97280f3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b28d46da-21e7-4ea0-ad3a-482c39e8f370">
+<span class="eqno">(19.9)<a class="headerlink" href="#equation-b28d46da-21e7-4ea0-ad3a-482c39e8f370" title="Permalink to this equation">#</a></span>\[\begin{align}
 R_s = \frac{2 G M_{\rm BH}}{c^2} \approx 3\ {\rm km} \times \left(\frac{M_{\rm BH}}{M_\odot}\right),
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(G\)</span> represents the <a class="reference external" href="https://en.wikipedia.org/wiki/Gravitational_constant">contant of universal gravitation</a> and <span class="math notranslate nohighlight">\(c\)</span> is the speed of light.</p>
@@ -755,14 +755,14 @@ R_s = \frac{2 G M_{\rm BH}}{c^2} \approx 3\ {\rm km} \times \left(\frac{M_{\rm B
 <section id="density-of-a-smbh">
 <h3><span class="section-number">19.3.2. </span>Density of a SMBH<a class="headerlink" href="#density-of-a-smbh" title="Link to this heading">#</a></h3>
 <p>How compact (or dense) is the mass inside the event horizon?  The mass of a SMBH can be measured by measuring the orbital period and semimajor axis of the star’s closest to them.  The bulk (average) density of an object is determined by spreading all the mass uniformly into a sphere of radius <span class="math notranslate nohighlight">\(R\)</span>.  In this case, the radius of the sphere is the Schwarzschild radius <span class="math notranslate nohighlight">\(R_s\)</span>, so that the density <span class="math notranslate nohighlight">\(\rho_{\rm BH}\)</span> is given by,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a0973509-80cd-4f23-8db5-1a3550b68a03">
-<span class="eqno">(19.10)<a class="headerlink" href="#equation-a0973509-80cd-4f23-8db5-1a3550b68a03" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-85dbf7fe-7b8c-4c1e-bcbe-9ed88ca776b2">
+<span class="eqno">(19.10)<a class="headerlink" href="#equation-85dbf7fe-7b8c-4c1e-bcbe-9ed88ca776b2" title="Permalink to this equation">#</a></span>\[\begin{align}
 \rho_{\rm BH} &amp;= \frac{M_{\rm BH}}{\frac{4}{3}\pi R_s^3},\ \text{or} \\
 &amp;= \left(\frac{M_{\rm BH}}{M_\odot}\right) \left(\frac{R_s}{R_\odot}\right)^{-3} \rho_\odot,
 \end{align}\]</div>
 <p>where we can make an approximation of the Schwarzschild radius <span class="math notranslate nohighlight">\(R_s\)</span> and make a substitution to get,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5e37a95b-60fd-438a-8150-57c7f075e75d">
-<span class="eqno">(19.11)<a class="headerlink" href="#equation-5e37a95b-60fd-438a-8150-57c7f075e75d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-37e76e8e-ff50-4d06-8f60-9a1a4b310978">
+<span class="eqno">(19.11)<a class="headerlink" href="#equation-37e76e8e-ff50-4d06-8f60-9a1a4b310978" title="Permalink to this equation">#</a></span>\[\begin{align}
 \rho_{\rm BH} &amp;\approx \left(\frac{R_\odot}{3\ {\rm km}}\right)^3 \left(\frac{M_{\rm BH}}{M_\odot}\right)^{-2}\rho_\odot, \\
 &amp;= 1.25 \times 10^{16} \left(\frac{M_{\rm BH}}{M_\odot}\right)^{-2}\rho_\odot,
 \end{align}\]</div>
