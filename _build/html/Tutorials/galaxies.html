@@ -73,6 +73,8 @@
                 gtag('config', 'G-TQDV8M90DP');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/galaxies';</script>
     <link rel="canonical" href="https://saturnaxis.github.io/IntroAstro/Tutorials/galaxies.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -499,7 +501,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-distance-from-a-type-ia-supernova">19.1. Finding the Distance from a Type Ia Supernova</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-recession-velocity-and-galactic-distances">19.2. Calculating Recession Velocity and Galactic Distances</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#size-density-power-of-a-smbh">19.3. Size, Density, &amp; Power of a SMBH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#size-density-of-a-smbh">19.3. Size &amp; Density of a SMBH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size-of-a-smbh">19.3.1. Size of a SMBH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#density-of-a-smbh">19.3.2. Density of a SMBH</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -515,12 +521,302 @@ document.write(`
 <h1><span class="section-number">19. </span>Galaxies<a class="headerlink" href="#galaxies" title="Link to this heading">#</a></h1>
 <section id="finding-the-distance-from-a-type-ia-supernova">
 <h2><span class="section-number">19.1. </span>Finding the Distance from a Type Ia Supernova<a class="headerlink" href="#finding-the-distance-from-a-type-ia-supernova" title="Link to this heading">#</a></h2>
+<p>Type Ia supernovae can shine as bright as an entire galaxy at their maximum brightness, which makes them ideal to use as a standard candle.  <strong>How do astronomers use Type Ia supernovae to estimate distance?</strong></p>
+<p>The first method uses the inverse-square law of light, which relates the flux <span class="math notranslate nohighlight">\(F\)</span> (or brightness), luminosity <span class="math notranslate nohighlight">\(L\)</span>, and distance <span class="math notranslate nohighlight">\(d\)</span> by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3d935205-dca8-4e37-bee4-1dcb5fdb775a">
+<span class="eqno">(19.1)<a class="headerlink" href="#equation-3d935205-dca8-4e37-bee4-1dcb5fdb775a" title="Permalink to this equation">#</a></span>\[\begin{align}
+F = \frac{L}{4\pi d^2}.
+\end{align}\]</div>
+<p>We can do two things to the above formula: (1) rewrite it in terms of the solar constant <span class="math notranslate nohighlight">\(F_\odot\ (=1361\ {\rm W/m^2})\)</span> and (2) re-arrange it so that we solve for the distance <span class="math notranslate nohighlight">\(d\)</span> directly.  We can get there by,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d5944702-1a95-4d66-8445-1a6e40c8991e">
+<span class="eqno">(19.2)<a class="headerlink" href="#equation-d5944702-1a95-4d66-8445-1a6e40c8991e" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{F}{F_\odot} = \left(\frac{L}{L_\odot}\right)\left(\frac{1\ {\rm AU}}{d}\right)^2, \\
+\frac{d}{1\ {\rm AU}} = \sqrt{\left(\frac{L}{L_\odot}\right)\left(\frac{1361\ {\rm W/m^2}}{F}\right)}.
+\end{align}\]</div>
+<p>From the definition of <a class="reference external" href="https://en.wikipedia.org/wiki/Parsec">parsec</a>, we can use the following conversion factors:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+1\ {\rm AU} &amp;= \frac{\pi}{6.48 \times 10^5}\ {\rm pc},\\
+1\ {\rm AU} &amp;= \frac{\pi}{6.48 \times 10^{11}}\ {\rm Mpc}.
+\end{align*}\]</div>
+<p>Type Ia supernovae are typically measured in other galaxies (which are really far away), so let’s use the formula with <span class="math notranslate nohighlight">\(\rm Mpc\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1b71b221-1dbc-462f-a770-1a9228874c58">
+<span class="eqno">(19.3)<a class="headerlink" href="#equation-1b71b221-1dbc-462f-a770-1a9228874c58" title="Permalink to this equation">#</a></span>\[\begin{align}
+d({\rm Mpc}) = \left(\frac{\pi}{6.48 \times 10^{11}}\right)\sqrt{\left(\frac{L}{L_\odot}\right)\left(\frac{1361\ {\rm W/m^2}}{F}\right)}.
+\end{align}\]</div>
+<p>From the above formula, we need to know the luminosity <span class="math notranslate nohighlight">\(L\)</span> of a Type Ia supernova and the observed flux <span class="math notranslate nohighlight">\(F\)</span> (in <span class="math notranslate nohighlight">\(W/m^2\)</span>).  The typical maximum luminosity <span class="math notranslate nohighlight">\(L\)</span> of a Type Ia supernova is about <span class="math notranslate nohighlight">\(9.5 \times 10^9\ L_\odot\)</span>.</p>
+<p><strong>In our textbook, it shows a picture of a Type Ia supernova in the Pinwheel Galaxy (M101).  The maximum observed flux of the supernova was <span class="math notranslate nohighlight">\(7.5\times 10^{-12}\ {\rm W/m^2}\)</span>.  How far away is M101 in ly?</strong></p>
+<p>We can directly substitute the observed flux into our equation and find the distance to M101 in <span class="math notranslate nohighlight">\(\rm Mpc\)</span>.  Recall that <span class="math notranslate nohighlight">\(1\ {\rm pc} = 3.26\ {\rm ly}\)</span>, which means that <span class="math notranslate nohighlight">\(1\ {\rm Mpc} = 3.26 \times 10^6\ {\rm ly} = 3.26\ {\rm Mly}\)</span>.</p>
+<p>First, finding the distance in <span class="math notranslate nohighlight">\(\rm Mpc\)</span> gives,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-089aad2f-9db1-4c19-ad60-4703a8834d7d">
+<span class="eqno">(19.4)<a class="headerlink" href="#equation-089aad2f-9db1-4c19-ad60-4703a8834d7d" title="Permalink to this equation">#</a></span>\[\begin{align}
+d &amp;= \left(\frac{\pi}{6.48 \times 10^{11}}\right)\sqrt{\left(\frac{9.5 \times 10^9\ L_\odot}{L_\odot}\right)\left(\frac{1361\ {\rm W/m^2}}{7.5\times 10^{-12}\ {\rm W/m^2}}\right)}, \\
+&amp;= \left(4.85 \times 10^{-12} \right)\sqrt{\left(9.5 \times 10^9 \right)\left(1.81 \times 10^{14} \right)}, \\
+&amp;= \left(4.85 \times 10^{-12} \right)\left(1.31 \times 10^{12} \right), \\
+&amp;= 6.4\ {\rm Mpc}.
+\end{align}\]</div>
+<p>Now we must convert to <span class="math notranslate nohighlight">\(\rm ly\)</span> to get</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dace65d2-5a04-4adc-ba9c-79f5408a9c5a">
+<span class="eqno">(19.5)<a class="headerlink" href="#equation-dace65d2-5a04-4adc-ba9c-79f5408a9c5a" title="Permalink to this equation">#</a></span>\[\begin{align}
+d &amp;= \frac{6.4\ {\rm Mpc}}{1}\times \frac{3.26 \times 10^6\ {\rm ly}}{1\ {\rm Mpc}}, \\
+&amp;= 2.1 \times 10^7\ {\rm ly}.
+\end{align}\]</div>
+<p>Note that M101 is <span class="math notranslate nohighlight">\(21\ {\rm Mly}\)</span> away, which means that the supernova occurred about <span class="math notranslate nohighlight">\(21\ {\rm million\ years}\)</span> ago.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">L_max</span> <span class="o">=</span> <span class="mf">9.5e9</span> <span class="c1">#maximum luminosity from a Type Ia supernova</span>
+<span class="n">F_SN</span> <span class="o">=</span> <span class="mf">7.5e-12</span> <span class="c1">#observed flux from the supernova in M101</span>
+<span class="n">F_sun</span> <span class="o">=</span> <span class="mi">1361</span> <span class="c1">#Solar constant (flux from the Sun at 1 AU)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">6.48e11</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L_max</span><span class="o">*</span><span class="n">F_sun</span><span class="o">/</span><span class="n">F_SN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Type Ia supernova places M101 </span><span class="si">%1.1f</span><span class="s2"> Mpc away.&quot;</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Type Ia supernova places M101 </span><span class="si">%1.1e</span><span class="s2"> ly away.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">d</span><span class="o">*</span><span class="mf">3.26e6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Type Ia supernova places M101 6.4 Mpc away.
+The Type Ia supernova places M101 2.1e+07 ly away.
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="calculating-recession-velocity-and-galactic-distances">
 <h2><span class="section-number">19.2. </span>Calculating Recession Velocity and Galactic Distances<a class="headerlink" href="#calculating-recession-velocity-and-galactic-distances" title="Link to this heading">#</a></h2>
+<p>We can determine a great deal using the equation for the Doppler effect (see <a class="reference external" href="https://saturnaxis.github.io/IntroAstro/Tutorials/light.html#making-use-of-the-doppler-effect">Making use of the Doppler effect</a>), where we measure the a spectral feature (in absorption or emission) is shifted in wavelength <span class="math notranslate nohighlight">\(\lambda_{\rm obs}\)</span> relative to the rest wavelength <span class="math notranslate nohighlight">\(\lambda_{\rm rest}\)</span>.  We have the Doppler effect equation for radial velocity <span class="math notranslate nohighlight">\(v_r\)</span> as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-56ebf4ab-8ef4-4195-9fb2-14bce3d63518">
+<span class="eqno">(19.6)<a class="headerlink" href="#equation-56ebf4ab-8ef4-4195-9fb2-14bce3d63518" title="Permalink to this equation">#</a></span>\[\begin{align}
+v_r = \frac{\lambda_{\rm obs}-\lambda_{\rm rest}}{\lambda_{\rm rest}} \times c,
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(c = 300,000\ {\rm km/s}\)</span>, or the speed of light.  Recall that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda_{\rm obs}-\lambda_{\rm rest} &lt; 0\)</span> corresponds to a blueshift because <span class="math notranslate nohighlight">\(\lambda_{\rm obs}&lt;\lambda_{\rm rest}\)</span>, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_{\rm obs}-\lambda_{\rm rest}&gt; 0\)</span> corresponds to a redshift because <span class="math notranslate nohighlight">\(\lambda_{\rm obs}&gt;\lambda_{\rm rest}\)</span>.</p></li>
+</ul>
+<p>For non-relativistic galaxy motion, we can replace the fraction in the Doppler equation with a single value <span class="math notranslate nohighlight">\(z\)</span>. <strong>Note: there is a correction to <span class="math notranslate nohighlight">\(z\)</span> as you approach the speed of light.</strong>  As a result, we now have</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2aa53f0b-2530-4298-b0da-354c59bfd230">
+<span class="eqno">(19.7)<a class="headerlink" href="#equation-2aa53f0b-2530-4298-b0da-354c59bfd230" title="Permalink to this equation">#</a></span>\[\begin{align}
+v_r = z \times c.
+\end{align}\]</div>
+<p><strong>You’re observing nebulae in the 1920’s and taking measurements of using a spectrograph (see <a class="reference internal" href="#galaxy-fig"><span class="std std-numref">Fig. 19.1</span></a> below).</strong>  You try to measure the <span class="math notranslate nohighlight">\(H\ \alpha\)</span> line at <span class="math notranslate nohighlight">\(656.3\ {\rm nm}\)</span> but find that it’s redshifted (see <a class="reference internal" href="#tab-radial-velocity"><span class="std std-numref">Table 19.1</span></a> below).</p>
+<figure class="align-default" id="galaxy-fig">
+<a class="reference internal image-reference" href="https://astro.wku.edu/astr106/H_K_redshift.jpg"><img alt="Hubble_redshift" src="https://astro.wku.edu/astr106/H_K_redshift.jpg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 19.1 </span><span class="caption-text">Measurements of various nebulae from observations by <a class="reference external" href="https://apod.nasa.gov/diamond_jubilee/d_1996/hub_1929.html">Hubble (1929)</a>.</span><a class="headerlink" href="#galaxy-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-radial-velocity" style="width: 50%">
+<caption><span class="caption-number">Table 19.1 </span><span class="caption-text">Observed Wavelengths and Redshift</span><a class="headerlink" href="#tab-radial-velocity" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>NGC</p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\lambda_{\rm obs}\)</span></p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(z\)</span></p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(v_r\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>5457</p></td>
+<td class="text-right"><p>656.738</p></td>
+<td class="text-right"><p>0.0007</p></td>
+<td class="text-right"><p>200</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>4736</p></td>
+<td class="text-right"><p>656.934</p></td>
+<td class="text-right"><p>0.0010</p></td>
+<td class="text-right"><p>290</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>5194</p></td>
+<td class="text-right"><p>656.891</p></td>
+<td class="text-right"><p>0.0009</p></td>
+<td class="text-right"><p>270</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>4449</p></td>
+<td class="text-right"><p>656.738</p></td>
+<td class="text-right"><p>0.0007</p></td>
+<td class="text-right"><p>200</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4214</p></td>
+<td class="text-right"><p>656.956</p></td>
+<td class="text-right"><p>0.0010</p></td>
+<td class="text-right"><p>300</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>3031</p></td>
+<td class="text-right"><p>656.366</p></td>
+<td class="text-right"><p>0.0001</p></td>
+<td class="text-right"><p>30</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>3627</p></td>
+<td class="text-right"><p>657.722</p></td>
+<td class="text-right"><p>0.0022</p></td>
+<td class="text-right"><p>650</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>4826</p></td>
+<td class="text-right"><p>656.628</p></td>
+<td class="text-right"><p>0.0005</p></td>
+<td class="text-right"><p>150</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>5236</p></td>
+<td class="text-right"><p>657.394</p></td>
+<td class="text-right"><p>0.0017</p></td>
+<td class="text-right"><p>500</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1068</p></td>
+<td class="text-right"><p>658.313</p></td>
+<td class="text-right"><p>0.0031</p></td>
+<td class="text-right"><p>920</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>5055</p></td>
+<td class="text-right"><p>657.284</p></td>
+<td class="text-right"><p>0.0015</p></td>
+<td class="text-right"><p>450</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>7331</p></td>
+<td class="text-right"><p>657.394</p></td>
+<td class="text-right"><p>0.0017</p></td>
+<td class="text-right"><p>500</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4258</p></td>
+<td class="text-right"><p>657.394</p></td>
+<td class="text-right"><p>0.0017</p></td>
+<td class="text-right"><p>500</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>4151</p></td>
+<td class="text-right"><p>658.400</p></td>
+<td class="text-right"><p>0.0032</p></td>
+<td class="text-right"><p>960</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4382</p></td>
+<td class="text-right"><p>657.394</p></td>
+<td class="text-right"><p>0.0017</p></td>
+<td class="text-right"><p>500</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>4472</p></td>
+<td class="text-right"><p>658.160</p></td>
+<td class="text-right"><p>0.0028</p></td>
+<td class="text-right"><p>850</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4486</p></td>
+<td class="text-right"><p>658.050</p></td>
+<td class="text-right"><p>0.0027</p></td>
+<td class="text-right"><p>800</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>4649</p></td>
+<td class="text-right"><p>658.685</p></td>
+<td class="text-right"><p>0.0036</p></td>
+<td class="text-right"><p>1090</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Let’s use the data for NGC 5236, where <span class="math notranslate nohighlight">\(\lambda_{\rm obs} = 657.394\ {\rm nm}\)</span> and <span class="math notranslate nohighlight">\(\lambda_{\rm rest} = 656.3\ {\rm nm}\)</span>.  From those values, we can determine <span class="math notranslate nohighlight">\(z\)</span> by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+z = \frac{657.394 - 656.3}{656.3} = \frac{1.094}{656.3} = 0.0017.
+\end{align*}\]</div>
+<p>Next, we can find the radial velocity by</p>
+<div class="math notranslate nohighlight">
+\[ v_r = 0.0017 \times (3\times 10^5\ {\rm km/s}) = 500\ {\rm km/s},\]</div>
+<p>which matches our table.  Look’s like we’re doing it right.</p>
+<p>Now, let’s find the distance to NGC 5236 using the Hubble constant <span class="math notranslate nohighlight">\((H_o = 70\ {\rm km/s/Mpc})\)</span>.  Hubble’s law is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4015ad15-e6ec-4b92-b4fb-7fce6db498bf">
+<span class="eqno">(19.8)<a class="headerlink" href="#equation-4015ad15-e6ec-4b92-b4fb-7fce6db498bf" title="Permalink to this equation">#</a></span>\[\begin{align}
+v_r = H_o \times d,
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(d\)</span> is the distance in <span class="math notranslate nohighlight">\(Mpc\)</span>.  Using a little algebra, we find for NGC 5236</p>
+<div class="math notranslate nohighlight">
+\[ d = \frac{500\ {\rm km/s}}{70\ {\rm km/s/Mpc}} = 7.1\ {\rm Mpc} = 7.1 \times 10^6\ {\rm pc}.\]</div>
+<p>From the measurement of a spectral line, we can find that NGC 5236 is <span class="math notranslate nohighlight">\(7.1\ {\rm Mpc}\)</span> away.  For comparision, Andromeda Galaxy (M31) is only <span class="math notranslate nohighlight">\(0.77\ {\rm Mpc}\)</span> away, which means that NGC 5236 is about <span class="math notranslate nohighlight">\(10\times\)</span> more distant than M31.</p>
 </section>
-<section id="size-density-power-of-a-smbh">
-<h2><span class="section-number">19.3. </span>Size, Density, &amp; Power of a SMBH<a class="headerlink" href="#size-density-power-of-a-smbh" title="Link to this heading">#</a></h2>
+<section id="size-density-of-a-smbh">
+<h2><span class="section-number">19.3. </span>Size &amp; Density of a SMBH<a class="headerlink" href="#size-density-of-a-smbh" title="Link to this heading">#</a></h2>
+<section id="size-of-a-smbh">
+<h3><span class="section-number">19.3.1. </span>Size of a SMBH<a class="headerlink" href="#size-of-a-smbh" title="Link to this heading">#</a></h3>
+<p>The size of a black hole depends only on a single parameter, its <strong>mass</strong>.  Recall the expression for the Schwarzschild radius <span class="math notranslate nohighlight">\(R_s\)</span>, which relates the radius of the black hole (or event horizon) to the black hole mass <span class="math notranslate nohighlight">\(M_{\rm BH}\)</span>, as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-273b2e8a-bfda-4eac-b9fe-c114c97280f3">
+<span class="eqno">(19.9)<a class="headerlink" href="#equation-273b2e8a-bfda-4eac-b9fe-c114c97280f3" title="Permalink to this equation">#</a></span>\[\begin{align}
+R_s = \frac{2 G M_{\rm BH}}{c^2} \approx 3\ {\rm km} \times \left(\frac{M_{\rm BH}}{M_\odot}\right),
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(G\)</span> represents the <a class="reference external" href="https://en.wikipedia.org/wiki/Gravitational_constant">contant of universal gravitation</a> and <span class="math notranslate nohighlight">\(c\)</span> is the speed of light.</p>
+<p>The largest supermassive black holes (SMBHs) observed have about <span class="math notranslate nohighlight">\(10\ {\rm billion}\ M_\odot\)</span>.  For example, the black hole at the center of <a class="reference external" href="https://en.wikipedia.org/wiki/Messier_87">M87</a> (a supergiant elliptical galaxy in Virgo) has a mass of <span class="math notranslate nohighlight">\(6.69 \times 10^9 M_\odot\)</span>.  We can easily find the size of this SMBH as</p>
+<div class="math notranslate nohighlight">
+\[ R_s = 3\ {\rm km} \times \left(\frac{6.69 \times 10^9 M_\odot}{M_\odot}\right) = 2.0 \times 10^{10}\ {\rm km}, \]</div>
+<p>or <span class="math notranslate nohighlight">\(20\ {\rm billion km}\)</span>.  We can convert that value in to astronomical units (AU), where <span class="math notranslate nohighlight">\(1\ {\rm AU} \approx 1.5\times 10^{8}\ {\rm km}\)</span>, by</p>
+<div class="math notranslate nohighlight">
+\[R_s = \frac{2 \times 10^{10}\ {\rm km}}{1} \times \frac{1\ {\rm AU}}{1.5\times 10^8\ {\rm km}} = 130\ {\rm AU}. \]</div>
+<p>The radius of the M87’s SMBH is large enough to engulf all of the Solar System planets (recall <span class="math notranslate nohighlight">\(a_{\rm Nept} \approx 30\ {\rm AU}\)</span>).  It’s big enough to engulf a sizeable portion of the Kuiper belt too.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We know that light takes <span class="math notranslate nohighlight">\(8.3\ {\rm min}\)</span> to travel <span class="math notranslate nohighlight">\(1\ {\rm AU}\)</span> (or the distance from the Earth to the Sun).  This means that it would take light about <span class="math notranslate nohighlight">\(1080\)</span> light-minutes for light to traverse just the radius of M87, or around <span class="math notranslate nohighlight">\(18\ {\rm hours}\)</span> to travel from the event horizon to the center of the SBMH.</p>
+</div>
+</section>
+<section id="density-of-a-smbh">
+<h3><span class="section-number">19.3.2. </span>Density of a SMBH<a class="headerlink" href="#density-of-a-smbh" title="Link to this heading">#</a></h3>
+<p>How compact (or dense) is the mass inside the event horizon?  The mass of a SMBH can be measured by measuring the orbital period and semimajor axis of the star’s closest to them.  The bulk (average) density of an object is determined by spreading all the mass uniformly into a sphere of radius <span class="math notranslate nohighlight">\(R\)</span>.  In this case, the radius of the sphere is the Schwarzschild radius <span class="math notranslate nohighlight">\(R_s\)</span>, so that the density <span class="math notranslate nohighlight">\(\rho_{\rm BH}\)</span> is given by,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a0973509-80cd-4f23-8db5-1a3550b68a03">
+<span class="eqno">(19.10)<a class="headerlink" href="#equation-a0973509-80cd-4f23-8db5-1a3550b68a03" title="Permalink to this equation">#</a></span>\[\begin{align}
+\rho_{\rm BH} &amp;= \frac{M_{\rm BH}}{\frac{4}{3}\pi R_s^3},\ \text{or} \\
+&amp;= \left(\frac{M_{\rm BH}}{M_\odot}\right) \left(\frac{R_s}{R_\odot}\right)^{-3} \rho_\odot,
+\end{align}\]</div>
+<p>where we can make an approximation of the Schwarzschild radius <span class="math notranslate nohighlight">\(R_s\)</span> and make a substitution to get,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5e37a95b-60fd-438a-8150-57c7f075e75d">
+<span class="eqno">(19.11)<a class="headerlink" href="#equation-5e37a95b-60fd-438a-8150-57c7f075e75d" title="Permalink to this equation">#</a></span>\[\begin{align}
+\rho_{\rm BH} &amp;\approx \left(\frac{R_\odot}{3\ {\rm km}}\right)^3 \left(\frac{M_{\rm BH}}{M_\odot}\right)^{-2}\rho_\odot, \\
+&amp;= 1.25 \times 10^{16} \left(\frac{M_{\rm BH}}{M_\odot}\right)^{-2}\rho_\odot,
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R_\odot\)</span> is a <a class="reference external" href="https://sco.wikipedia.org/wiki/Solar_radius">solar radius</a> (<span class="math notranslate nohighlight">\(6.957 \times 10^5\ {\rm km}\)</span>) and <span class="math notranslate nohighlight">\(\rho_\odot\)</span> is the <a class="reference external" href="http://hyperphysics.phy-astr.gsu.edu/hbase/Solar/sun.html">solar density</a> <span class="math notranslate nohighlight">\((1.41\ {\rm g/cm^3})\)</span>.</p>
+<p><strong>Consider the density of different SMBHs ranging from the Milky Way (<span class="math notranslate nohighlight">\({\sim}4 \times 10^6\ {\rm M_\odot}\)</span>) to M87.</strong>  You want to express the density of the black hole <span class="math notranslate nohighlight">\(\rho_{\rm BH}\)</span> in normal units (i.e., <span class="math notranslate nohighlight">\(\rm g/cm^3\)</span>) and astronomical units <span class="math notranslate nohighlight">\((\text{i.e., } M_\odot/{\rm AU}^3)\)</span>.  Note that the mass of the M87’s SMBH is about <span class="math notranslate nohighlight">\(1673\times\)</span> the mass of the Milky Way’s SMBH.</p>
+<p>Let’s find the density of the SMBH at the center of the Milky Way <span class="math notranslate nohighlight">\(\rho_{\rm MW}\)</span>.  Using our formula from above,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\rho_{\rm MW} &amp;= 1.25 \times 10^{16} \left(\frac{4\times 10^6 M_\odot}{M_\odot}\right)^{-2} \rho_\odot, \\
+&amp;= 781\rho_\odot = 1100\ {\rm g/cm^3} = 1.1 \times 10^6\ {\rm kg/m^3}.
+\end{align*}\]</div>
+<p>The SMBH of our own Milky Way is about <span class="math notranslate nohighlight">\(781\times\)</span> denser than the Sun.</p>
+<p>Now let’s consider a more massive SMBH like the one at the center of M87.  Since, we know about how much more massive the SMBH is compared to the Milky Way, we can use make use of our previous result by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\rho_{\rm M87} &amp;= \left(\frac{\rm M_{\rm M87}}{\rm M_{\rm MW}}\right)^{-2}\rho_{\rm MW},\\
+&amp;= \left(\frac{1}{1673} \right)^2 \left(781 \rho_\odot \right), \\
+&amp;= 2.79 \times 10^{-4} \rho_\odot = 3.9 \times 10^{-4}\ {\rm g/cm^3} = 0.39\ {\rm kg/m^3}.
+\end{align*}\]</div>
+<p>That is about <span class="math notranslate nohighlight">\(1/3\)</span> the density of air at sea level <span class="math notranslate nohighlight">\((\rho_{\rm air} = 1225\ {\rm kg/m^3})\)</span> or about <span class="math notranslate nohighlight">\(1/2500\)</span> the density of water.  Lower mass black holes are denser than SMBHs because the density scales with the inverse square of the mass, <span class="math notranslate nohighlight">\(\rho_{\rm BH} \propto 1/M_{\rm BH}^2\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The conversion to astronomical units is straightfoward where you should find that <span class="math notranslate nohighlight">\(1\ {\rm g/cm^3} = 1.68 \times 10^6\ M_\odot/{\rm AU}^3.\)</span>  In these units the solar density <span class="math notranslate nohighlight">\(\rho_\odot = 2.36\ M_\odot/{\rm AU}^3.\)</span>  This seems like a lot, but remember that the Sun’s radius <span class="math notranslate nohighlight">\(R_\odot = 0.00465\ {\rm AU}\)</span> is really small.</p>
+</div>
+<p><a class="reference internal" href="#tab-bh-density-au"><span class="std std-numref">Table 19.2</span></a> shows the estimated density of several different black holes (relative to the Milky Way’s SMBH), but it provides the density in astronomical units, cgs units, and relative to the solar density.  Note that the values are correct to the nearest order of magnitude, where the uncertainty in the measurement of the SMBH mass is usually <span class="math notranslate nohighlight">\(\gtrsim 5\%\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-bh-density-au">
+<caption><span class="caption-number">Table 19.2 </span><span class="caption-text">Mean density inside the Schwarzschild radius</span><a class="headerlink" href="#tab-bh-density-au" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>SMBH Mass ($M_{\rm MW})</p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\rho_{\rm BH}\)</span> <span class="math notranslate nohighlight">\([M_\odot/\mathrm{AU}^3]\)</span></p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\rho_{\rm BH}\)</span> <span class="math notranslate nohighlight">\([g/cm^3]\)</span></p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\rho_{\rm BH}/\rho_\odot\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Milky Way   (<span class="math notranslate nohighlight">\(1\ M_{\rm MW}\)</span>)</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(1.8\times 10^9\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(1100\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(781\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Andromeda  (<span class="math notranslate nohighlight">\(35\ M_{\rm MW}\)</span>)</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(1.5\times 10^6\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(0.89\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(0.64\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>M87  (<span class="math notranslate nohighlight">\(1670\ M_{\rm MW}\)</span>)</p></td>
+<td class="text-right"><p>640</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(3.9\times 10^{-4}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(2.79\times 10^{-4}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 </section>
 
@@ -590,7 +886,11 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-distance-from-a-type-ia-supernova">19.1. Finding the Distance from a Type Ia Supernova</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-recession-velocity-and-galactic-distances">19.2. Calculating Recession Velocity and Galactic Distances</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#size-density-power-of-a-smbh">19.3. Size, Density, &amp; Power of a SMBH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#size-density-of-a-smbh">19.3. Size &amp; Density of a SMBH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size-of-a-smbh">19.3.1. Size of a SMBH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#density-of-a-smbh">19.3.2. Density of a SMBH</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
